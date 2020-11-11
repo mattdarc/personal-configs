@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
+Plug 'dag/vim-fish'
 
 " Couldn't get by without this
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
@@ -61,6 +62,7 @@ autocmd FileType * setlocal formatoptions-=cro
 set nohlsearch
 set nu
 colorscheme gruvbox
+set bg=dark
 
 let g:rustfmt_autosave = 1
 
