@@ -19,6 +19,7 @@ Plug 'preservim/nerdcommenter'
 " Syntax enhancements
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 syntax enable
