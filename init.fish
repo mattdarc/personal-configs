@@ -1,7 +1,7 @@
 set -gx PATH "/usr/local/bin" $PATH
 set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "/usr/local/share/arcanist/bin" $PATH
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 # FZF uses ripgrep
 set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'

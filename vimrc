@@ -114,6 +114,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+au TermOpen * setlocal listchars= nonumber norelativenumber
+au TermOpen * startinsert
+
 
 
 " coc.nvim configuration
