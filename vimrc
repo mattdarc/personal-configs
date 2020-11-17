@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'rafi/awesome-vim-colorschemes'
@@ -77,7 +77,7 @@ set timeoutlen=500
 
 nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
-nnoremap <silent> <C-w>t :vert :term<CR>
+nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>fc :Files %:p:h<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
@@ -114,14 +114,16 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" Reasonable terminal behavior
 au TermOpen * setlocal listchars= nonumber norelativenumber
 au TermOpen * startinsert
 
-tnoremap <C->
-tnoremap h <C->h
-tnoremap j <C->j
-tnoremap k <C->k
-tnoremap l <C->l
+tnoremap <silent> <Esc> <C-\><C-n>
+tnoremap <silent> <C-w>c <C-\><C-n>:q<CR>
+tnoremap <silent> <C-w>l <C-\><C-n><C-w>l
+tnoremap <silent> <C-w>h <C-\><C-n><C-w>h
+tnoremap <silent> <C-w>j <C-\><C-n><C-w>j
+tnoremap <silent> <C-w>k <C-\><C-n><C-w>k
 
 " coc.nvim configuration
 " TextEdit might fail if hidden is not set.
