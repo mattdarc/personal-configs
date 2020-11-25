@@ -28,7 +28,7 @@ filetype plugin indent on
 
 " clang-format style
 let g:clang_format#code_style = 'llvm'
-autocmd FileType {c,cpp,hpp} ClangFormatAutoEnable
+autocmd FileType *.c,*.cpp,*.hpp ClangFormatAutoEnable
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -84,6 +84,7 @@ nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <silent> <leader>/ :BLines<CR>
 
 " air-line fallbacks       
 let g:airline_powerline_fonts = 1
@@ -116,7 +117,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " Reasonable terminal behavior
-autocmd TermOpen * setlocal listchars= nonumber norelativenumber
+autocmd TermEnter * setlocal listchars= nonumber norelativenumber
 autocmd TermOpen * startinsert
 tnoremap <silent> <Esc> <C-\><C-n>:q<CR>
 tnoremap <silent> <C-w>l <C-\><C-n><C-w>l
