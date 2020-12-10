@@ -87,7 +87,10 @@ nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
-nnoremap <silent> <leader>/ :BLines<CR>
+nnoremap <silent> / :BLines<CR>
+nnoremap <silent> <leader>n :bn<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>p :bp<CR>
 
 " air-line fallbacks       
 let g:airline_powerline_fonts = 1
