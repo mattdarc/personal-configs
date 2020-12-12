@@ -60,7 +60,7 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 set autoindent
-set smartindent
+set cindent 
 set cursorline
 set textwidth=90
 
@@ -88,9 +88,7 @@ nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <silent> / :BLines<CR>
-nnoremap <silent> <leader>n :bn<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>p :bp<CR>
 
 " air-line fallbacks       
 let g:airline_powerline_fonts = 1
@@ -123,8 +121,11 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " Reasonable terminal behavior
-autocmd TermEnter * setlocal listchars= nonumber norelativenumber
-autocmd TermOpen * startinsert
+augroup TermGroup
+    autocmd!
+    autocmd TermEnter * setlocal listchars= nonumber norelativenumber
+    autocmd TermOpen * startinsert
+augroup END
 tnoremap <silent> <Esc> <C-\><C-n>:q<CR>
 tnoremap <silent> <C-w>l <C-\><C-n><C-w>l
 tnoremap <silent> <C-w>h <C-\><C-n><C-w>h
