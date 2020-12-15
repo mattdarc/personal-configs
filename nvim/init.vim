@@ -33,6 +33,10 @@ filetype plugin indent on
 let g:clang_format#code_style = 'llvm'
 autocmd FileType *.c,*.cpp,*.hpp ClangFormatAutoEnable
 
+" FZF config
+let g:fzf_preview_window = ['up:60%', 'ctrl-/']
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
+
 " TODO Need to remove any binary files (slx, slxt, etc...)
 " P4rg for searching files in a changelist
 command! -bang -nargs=* P4Rg
@@ -40,7 +44,7 @@ command! -bang -nargs=* P4Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
   \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
   \   .'| sed '.shellescape('s/%40/@/g', 1).')', 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1], ), <bang>0)
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
