@@ -99,7 +99,8 @@ nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <silent> <leader>gr :Rg<CR>
+nnoremap <silent> <leader>gp :P4Rg<CR>
 nnoremap <silent> / :BLines<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
