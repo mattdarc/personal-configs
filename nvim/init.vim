@@ -33,23 +33,14 @@ filetype plugin indent on
 let g:clang_format#code_style = 'llvm'
 autocmd FileType *.c,*.cpp,*.hpp ClangFormatAutoEnable
 
-" TODO Replace with Rg instead of cat, https://github.com/junegunn/fzf/blob/master/README-VIM.md
 " TODO Need to remove any binary files (slx, slxt, etc...)
-" TODO Need to add line numbers
 " P4rg for searching files in a changelist
-function! s:p4_lines() abort
-    let file_list = "cat $(p4 opened | sed "
-                \ .shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
-                \ . "| sed ".shellescape('s/%40/@/g', 1).")"
-    "execute '!'.file_list
-return fzf#run(fzf#wrap({
-\ 'source':  file_list,
-\ 'sink*':   'edit',
-\ 'options': ['+m', '--tiebreak=index', '--prompt', 'Lines> ', '--ansi', '--extended', '--tabstop=1']
-\}))
-endfunction
-
-command! -bang -nargs=0 P4Rg call s:p4_lines()
+command! -bang -nargs=* P4Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
+  \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
+  \   .'| sed '.shellescape('s/%40/@/g', 1).')', 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
