@@ -43,8 +43,10 @@ command! -bang -nargs=* P4Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
   \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
-  \   .'| sed '.shellescape('s/%40/@/g', 1).')', 1,
-  \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1], ), <bang>0)
+  \   .'| sed '.shellescape('s/%40/@/g', 1)
+  \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
+  \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
+" , {'options': '--prompt P4Rg>'}
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
