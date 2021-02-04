@@ -43,10 +43,17 @@ command! -bang -nargs=* P4Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
   \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
-  \   .'| sed '.shellescape('s/%40/@/g', 1)
+  \   .'| sed '.shellescape('s/%40/@/g', 1) 
+  \   .'| sed '.shellescape('0,/matlab/s/matlab//')
   \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
   \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
 " , {'options': '--prompt P4Rg>'}
+
+command! -bang -nargs=* LinesWithPreview
+    \ call fzf#vim#grep(
+    \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+    \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
+nnoremap / :LinesWithPreview<CR>
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -103,7 +110,7 @@ nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>gr :Rg<CR>
 nnoremap <silent> <leader>gp :P4Rg<CR>
-nnoremap <silent> / :BLines<CR>
+nnoremap <silent> / :LinesWithPreview<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
 " air-line fallbacks       
@@ -147,6 +154,12 @@ tnoremap <silent> <C-w>l <C-\><C-n><C-w>l
 tnoremap <silent> <C-w>h <C-\><C-n><C-w>h
 tnoremap <silent> <C-w>j <C-\><C-n><C-w>j
 tnoremap <silent> <C-w>k <C-\><C-n><C-w>k
+
+" ZML configuration
+augroup ZMLGroup
+    autocmd!
+    autocmd BufRead *.zml setlocal formatoptions-=t
+augroup END
 
 " coc.nvim configuration
 " TextEdit might fail if hidden is not set.
