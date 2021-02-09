@@ -3,7 +3,7 @@ let &packpath = &runtimepath
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf' 
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'rafi/awesome-vim-colorschemes'
@@ -40,19 +40,18 @@ let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
 " TODO Need to remove any binary files (slx, slxt, etc...)
 " P4rg for searching files in a changelist
 command! -bang -nargs=* P4Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
-  \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
-  \   .'| sed '.shellescape('s/%40/@/g', 1) 
-  \   .'| sed '.shellescape('0,/matlab/s/matlab//')
-  \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
-  \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
+            \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/\(mwpdb\|B.*\)\/\(.*\)#.*/\1/g', 1)
+            \   .'| sed '.shellescape('s/%40/@/g', 1)
+            \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
+            \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
 " , {'options': '--prompt P4Rg>'}
 
 command! -bang -nargs=* LinesWithPreview
-    \ call fzf#vim#grep(
-    \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-    \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+            \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
 nnoremap / :LinesWithPreview<CR>
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
@@ -82,11 +81,12 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 set autoindent
-set cindent 
+set cindent
 set cursorline
 set textwidth=90
+set colorcolumn=90
 
-" disable comment continue 
+" disable comment continue
 autocmd FileType * setlocal formatoptions-=cro
 
 " set autochdir
@@ -112,8 +112,9 @@ nnoremap <silent> <leader>gr :Rg<CR>
 nnoremap <silent> <leader>gp :P4Rg<CR>
 nnoremap <silent> / :LinesWithPreview<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>cw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-" air-line fallbacks       
+" air-line fallbacks
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -182,19 +183,23 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
 else
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+" Toggle comments with a single key
+nmap <silent> ; <Plug>NERDCommenterInvert
+vmap <silent> ; <Plug>NERDCommenterInvert
+
+ "Use tab for trigger completion with characters ahead and navigate.
+ "NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+ "other plugin before putting this into your config.
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 nmap <silent> <C-p> <Plug>(coc-diagnostic-prev)
@@ -217,13 +222,13 @@ nmap <leader>fc  <Plug>(coc-format-selected)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
