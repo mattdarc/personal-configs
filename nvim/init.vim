@@ -83,8 +83,8 @@ set expandtab
 set autoindent
 set cindent
 set cursorline
-set textwidth=90
-set colorcolumn=90
+set textwidth=100
+set colorcolumn=100
 
 " disable comment continue
 autocmd FileType * setlocal formatoptions-=cro
