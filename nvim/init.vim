@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 " Plug 'dense-analysis/ale'
 Plug 'dag/vim-fish'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 
 " Couldn't get by without this
@@ -81,6 +82,7 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 set autoindent
+set smartindent
 set cindent
 set cursorline
 set textwidth=100

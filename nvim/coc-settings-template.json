@@ -15,6 +15,9 @@
                 },
                 "clang": {
                     "resourceDir": "/usr/lib64/clang/10.0.1"
+                }, 
+                "highlight": { 
+                    "lsRanges" : true 
                 }
             }
         }
