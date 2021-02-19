@@ -10,6 +10,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'aklt/plantuml-syntax'
 " Plug 'dense-analysis/ale'
 Plug 'dag/vim-fish'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
