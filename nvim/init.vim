@@ -33,7 +33,7 @@ filetype plugin indent on
 
 " clang-format style
 let g:clang_format#code_style = 'llvm'
-autocmd FileType *.c,*.cpp,*.hpp ClangFormatAutoEnable
+autocmd FileType *.c,*.cpp,*.hpp,*.cc,*.h ClangFormatAutoEnable
 
 " FZF config
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']
@@ -219,7 +219,7 @@ nmap <silent> <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>fc  <Plug>(coc-format-selected)
-nmap <leader>fc  <Plug>(coc-format-selected)
+nmap <silent> <leader>fc  <Plug>:ClangFormat<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
