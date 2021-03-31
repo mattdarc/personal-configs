@@ -21,6 +21,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Commenting
 Plug 'preservim/nerdcommenter'
+Plug 'qpkorr/vim-bufkill'
 
 " Syntax enhancements
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -44,7 +45,7 @@ let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
 command! -bang -nargs=* P4Rg
             \ call fzf#vim#grep(
             \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
-            \   .'$(p4 opened | sed '.shellescape('s/\/\/mw\/\(mwpdb\|B.*\)\/\(.*\)#.*/\1/g', 1)
+            \   .'$(p4 opened | sed '.shellescape('s/\/\/mw.*\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
             \   .'| sed '.shellescape('s/%40/@/g', 1)
             \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
             \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
