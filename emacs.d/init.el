@@ -11,11 +11,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package work :load-path "~/.emacs.d/lib")
-(use-package zml-mode :load-path "~/.emacs.d/lib")
-(use-package jack-mode :load-path "~/.emacs.d/lib")
-(use-package functions :load-path "~/.emacs.d/lib")
-(use-package c-style :load-path "~/.emacs.d/lib")
+(setq local-libs "~/.emacs.d/lib")
+(use-package work      :load-path local-libs)
+(use-package zml-mode  :load-path local-libs)
+(use-package jack-mode :load-path local-libs)
+(use-package functions :load-path local-libs)
+(use-package c-style   :load-path local-libs)
 (use-package cmake-mode)
 
 ;; initial window
@@ -424,13 +425,15 @@
   :hook ((scala-mode . lsp)
 	 (rust-mode . lsp)
 	 (matlab-mode . lsp-deferred)
+	 (c++-mode . lsp)
+	 (c-mode . lsp)
 	 ;; (lsp-mode . lsp-lens-mode) ;; inline references
 	 (lsp-mode . lsp-enable-which-key-integration))
   :config
   (setq lsp-prefer-flymake nil)
   (setq lsp-enable-file-watchers nil)
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  (setq lsp-disabled-clients '(ccls clangd))
+  (setq lsp-disabled-clients '(clangd))
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
   (setq lsp-idle-delay 0.500)
@@ -473,6 +476,7 @@
 (use-package flycheck
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enable)))
+
 (use-package lsp-treemacs
   :config
   (setq lsp-metals-treeview-show-when-views-received t)
@@ -481,7 +485,7 @@
 ;; lsp backends
 (use-package lsp-metals)
 (use-package ccls
-  :hook ((c-mode c++-mode cc-mode) . (lambda () (require 'ccls) (my/ccls-connect-server)))
+  ;;:hook ((c-mode c++-mode cc-mode) . (lambda () (require 'ccls) (my/ccls-connect-server)))
   :config
   (setq ccls-executable "ccls")
   (setq ccls-code-lens-mode nil)
@@ -549,3 +553,5 @@ Single Capitals as you type."
 	  ("TLDR" . "#FFFF00")))
   (setq global-hl-todo-mode t)
   )
+
+(setq eshell-scroll-to-bottom-on-output t)
