@@ -470,7 +470,6 @@
   )
 
 (use-package lsp-ivy)
-(use-package company-lsp :commands company-lsp)
 (use-package flycheck
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enable)))

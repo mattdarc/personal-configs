@@ -11,8 +11,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'aklt/plantuml-syntax'
-" Plug 'dense-analysis/ale'
-Plug 'dag/vim-fish'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
@@ -39,17 +37,6 @@ autocmd FileType *.c,*.cpp,*.hpp,*.cc,*.h ClangFormatAutoEnable
 " FZF config
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']
 let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
-
-" TODO Need to remove any binary files (slx, slxt, etc...)
-" P4rg for searching files in a changelist
-command! -bang -nargs=* P4Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' '
-            \   .'$(p4 opened | sed '.shellescape('s/\/\/mw.*\/.*\/matlab\/\(.*\)#.*/\1/g', 1)
-            \   .'| sed '.shellescape('s/%40/@/g', 1)
-            \   .'| grep -v '.shellescape('"\.\(slx\|slxt\|mat\)$"')
-            \   .')',1 ,fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
-" , {'options': '--prompt P4Rg>'}
 
 command! -bang -nargs=* LinesWithPreview
             \ call fzf#vim#grep(
@@ -113,9 +100,8 @@ nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>gr :Rg<CR>
-nnoremap <silent> <leader>gp :P4Rg<CR>
 nnoremap <silent> / :LinesWithPreview<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>< :Buffers<CR>
 nnoremap <silent> <leader>cw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " air-line fallbacks
