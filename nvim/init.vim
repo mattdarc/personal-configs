@@ -20,12 +20,16 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Commenting
 Plug 'preservim/nerdcommenter'
 Plug 'qpkorr/vim-bufkill'
+Plug 'luochen1990/rainbow'
 
 " Syntax enhancements
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
 Plug 'vimwiki/vimwiki'
 call plug#end()
+
+"set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1
 
 syntax enable
 filetype plugin indent on
