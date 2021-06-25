@@ -46,7 +46,6 @@ command! -bang -nargs=* LinesWithPreview
             \ call fzf#vim#grep(
             \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
             \   fzf#vim#with_preview(g:fzf_preview_window[0], g:fzf_preview_window[1]), <bang>0)
-nnoremap / :LinesWithPreview<CR>
 
 " Syntax highlighting for vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -80,6 +79,10 @@ set cindent
 set cursorline
 set textwidth=100
 set colorcolumn=100
+set formatoptions-=t
+set ignorecase
+set smartcase
+set hlsearch
 
 " disable comment continue
 autocmd FileType * setlocal formatoptions-=cro
@@ -99,14 +102,28 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 set timeoutlen=500
 
+function s:vimrc()
+    return '$HOME/.config/nvim/init.vim'
+endfunction
+
 nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <C-w>t :vsplit\|terminal<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>gr :Rg<CR>
-nnoremap <silent> / :LinesWithPreview<CR>
-nnoremap <silent> <leader>< :Buffers<CR>
+nnoremap <silent> <leader>gp :P4Rg<CR>
+nnoremap <silent> <leader>ss :LinesWithPreview<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>cw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <silent> <leader>wv <C-\><C-n><C-w>v
+nnoremap <silent> <leader>wd <C-\><C-n><C-w>c
+nnoremap <silent> <leader>ws <C-\><C-n><C-w>s
+nnoremap <silent> <leader>wl <C-\><C-n><C-w>l
+nnoremap <silent> <leader>wh <C-\><C-n><C-w>h
+nnoremap <silent> <leader>wj <C-\><C-n><C-w>j
+nnoremap <silent> <leader>wk <C-\><C-n><C-w>k
+nnoremap <silent> <leader>fed :execute 'edit '.<SID>vimrc()<CR>
+nnoremap <silent> <leader>feR :execute 'source '.<SID>vimrc()<CR>
 
 " air-line fallbacks
 let g:airline_powerline_fonts = 1
@@ -150,11 +167,6 @@ tnoremap <silent> <C-w>h <C-\><C-n><C-w>h
 tnoremap <silent> <C-w>j <C-\><C-n><C-w>j
 tnoremap <silent> <C-w>k <C-\><C-n><C-w>k
 
-" ZML configuration
-augroup ZMLGroup
-    autocmd!
-    autocmd BufRead *.zml setlocal formatoptions-=t
-augroup END
 
 " coc.nvim configuration
 " TextEdit might fail if hidden is not set.
@@ -187,10 +199,9 @@ endif
 nmap <silent> ; <Plug>NERDCommenterInvert
 vmap <silent> ; <Plug>NERDCommenterInvert
 
- "Use tab for trigger completion with characters ahead and navigate.
- "NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
- "other plugin before putting this into your config.
-
+"Use tab for trigger completion with characters ahead and navigate.
+"NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"other plugin before putting this into your config.
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
@@ -201,7 +212,7 @@ nmap <silent> <C-n> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 

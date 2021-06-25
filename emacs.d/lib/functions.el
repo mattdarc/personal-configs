@@ -136,7 +136,7 @@ https://emacs.stackexchange.com/questions/13970/fixing-double-capitals-as-i-type
   (if buffer-file-truename
 	(let ((ccls-root (my/ccls-root buffer-file-truename)))
 	  (if ccls-root
-	      (let* 
+	      (let*
 		  ((server-id (my/ccls-server-id ccls-root))
 		   ;; NOTE: the args need to be single quoted if they are not provided as a list
 		   (loc-ccls-args (replace-regexp-in-string "sbroot" ccls-root
@@ -149,9 +149,9 @@ https://emacs.stackexchange.com/questions/13970/fixing-double-capitals-as-i-type
 	 						     )))
 		   (ccls-command (concat ccls-executable " " (if (equal (getenv "USER") "mdarcang") loc-ccls-args "")))
 		   (server-exists (gethash server-id sb-ccls-clients)))
-		
+
 		(message "Server ID %s" server-id)
-		
+
 		(if ccls-root
 		    (progn
 		      (unless server-exists
