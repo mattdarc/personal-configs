@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -72,7 +71,7 @@ set smartcase
 set hlsearch
 set timeoutlen=500
 
-" set autochdir
+set autochdir
 set nohlsearch
 set nu
 colorscheme gruvbox
@@ -80,11 +79,19 @@ set bg=dark
 
 let g:rustfmt_autosave = 1
 
-" Toggle comments with a single key
-nmap <silent> ; <Plug>NERDCommenterInvert
-vmap <silent> ; <Plug>NERDCommenterInvert
-
 abbreviate eph edit %:p:h
+
+" File explorer settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+
+autocmd BufWritePre *
+    \ if '<afile>' !~ '^scp:' && !isdirectory(expand('<afile>:h')) |
+        \ call mkdir(expand('<afile>:h'), 'p') |
+    \ endif
 
 let s:path = expand('<sfile>:p:h')
 execute 'source '.s:path.'/autocorrect.vimrc'
