@@ -58,7 +58,7 @@ set updatetime=300
 set shortmess+=c
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Some servers have issues with backup files, see #649.
 set nobackup
