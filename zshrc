@@ -101,3 +101,5 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/share/fzf/shell/key-bindings.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

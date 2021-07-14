@@ -6,7 +6,7 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nmap <silent> <C-p> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-N> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-n> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
