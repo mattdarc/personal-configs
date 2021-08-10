@@ -18,6 +18,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Commenting
 Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'luochen1990/rainbow'
 
@@ -82,15 +83,15 @@ let g:rustfmt_autosave = 1
 abbreviate eph edit %:p:h
 
 " File explorer settings
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
-let g:netrw_wiw = 1
-augroup AutoDeleteNetrwHiddenBuffers
-  au!
-  au FileType netrw setlocal bufhidden=wipe
-augroup end
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_winsize = 25
+" let g:netrw_wiw = 1
+" augroup AutoDeleteNetrwHiddenBuffers
+"   au!
+"   au FileType netrw setlocal bufhidden=wipe
+" augroup end
 
 autocmd BufWritePre *
     \ if '<afile>' !~ '^scp:' && !isdirectory(expand('<afile>:h')) |

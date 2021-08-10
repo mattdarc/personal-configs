@@ -21,7 +21,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>xdw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <silent> <leader>fed :execute 'edit '.<SID>vimrc()<CR>
 nnoremap <silent> <leader>feR :execute 'source '.<SID>vimrc() \| echo 'config reloaded!'<CR>
-nnoremap <silent> <leader>t :Lexplore<CR>
+nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 
 " Reasonable terminal behavior
 augroup TermGroup
