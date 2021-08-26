@@ -72,7 +72,7 @@ set smartcase
 set hlsearch
 set timeoutlen=500
 
-set autochdir
+"set autochdir
 set nohlsearch
 set nu
 colorscheme gruvbox
