@@ -103,3 +103,6 @@ export EDITOR='nvim'
 source /usr/share/fzf/shell/key-bindings.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# opam configuration
+test -r /home/mattdarcangelo/.opam/opam-init/init.zsh && . /home/mattdarcangelo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

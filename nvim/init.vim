@@ -72,7 +72,6 @@ set smartcase
 set hlsearch
 set timeoutlen=500
 
-"set autochdir
 set nohlsearch
 set nu
 colorscheme gruvbox
@@ -102,3 +101,7 @@ execute 'source '.s:path.'/airline.vimrc'
 if filereadable(expand("~/.vimrc"))
     source ~/.vimrc
 endif
+
+" OCaml setup
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
