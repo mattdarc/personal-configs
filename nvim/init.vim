@@ -82,16 +82,10 @@ let g:rustfmt_autosave = 1
 
 abbreviate eph edit %:p:h
 
-" File explorer settings
-" let g:netrw_banner = 0
-" let g:netrw_liststyle = 3
-" let g:netrw_browse_split = 4
-" let g:netrw_winsize = 25
-" let g:netrw_wiw = 1
-" augroup AutoDeleteNetrwHiddenBuffers
-"   au!
-"   au FileType netrw setlocal bufhidden=wipe
-" augroup end
+" function! json_format#format() abort
+"     let source = join(getline(1, '$'), "\n")
+"     return s:system(printf('echo %s | jq -M .', source))
+" endfunction
 
 autocmd BufWritePre *
     \ if '<afile>' !~ '^scp:' && !isdirectory(expand('<afile>:h')) |

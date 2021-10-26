@@ -18,6 +18,9 @@
                 }, 
                 "highlight": { 
                     "lsRanges" : true 
+                },
+                "index": {
+                    "threads": 6
                 }
             }
         }
