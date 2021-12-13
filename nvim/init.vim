@@ -26,6 +26,8 @@ Plug 'luochen1990/rainbow'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-orgmode/orgmode'
 call plug#end()
 
 "set to 0 if you want to enable it later via :RainbowToggle
@@ -73,7 +75,7 @@ set hlsearch
 set timeoutlen=500
 
 set nohlsearch
-set nu
+set number relativenumber
 colorscheme gruvbox
 set bg=dark
 
@@ -92,16 +94,21 @@ autocmd BufWritePre *
     \ endif
 
 let s:path = expand('<sfile>:p:h')
-execute 'source '.s:path.'/autocorrect.vimrc'
-execute 'source '.s:path.'/fzf.vimrc'
-execute 'source '.s:path.'/keybindings.vimrc'
-execute 'source '.s:path.'/coc.vimrc'
-execute 'source '.s:path.'/airline.vimrc'
+function! s:source_relative (file)
+    execute 'source '.s:path.'/'.a:file
+endfunction
+
+call s:source_relative ('autocorrect.vimrc')
+call s:source_relative ('fzf.vimrc')
+call s:source_relative ('keybindings.vimrc')
+call s:source_relative ('coc.vimrc')
+call s:source_relative ('airline.vimrc')
+call s:source_relative ('org.vimrc')
 
 if filereadable(expand("~/.vimrc"))
     source ~/.vimrc
 endif
 
 " OCaml setup
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"

@@ -28,6 +28,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" For some reason, colnr doesn't show up
+let g:airline_symbols.colnr = "\u33c7"
+
 " Status lines for ALE: Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 

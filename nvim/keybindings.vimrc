@@ -8,6 +8,17 @@ function s:vimrc()
     return '$HOME/.config/nvim/init.vim'
 endfunction
 
+function s:indent_buffer ()
+    if &filetype ==# 'c' || &filetype ==# 'cpp'
+        :ClangFormat
+    else
+        gg=G``
+    endif
+endfunction
+
+" Indent file
+nnoremap <silent> <leader>ef :call <sid>indent_buffer()<CR>
+
 nnoremap <silent> <leader>Q :qa<CR>
 nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>fs :w<CR>
