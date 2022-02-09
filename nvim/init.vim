@@ -22,6 +22,9 @@ Plug 'preservim/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'luochen1990/rainbow'
 
+" ASCII art
+Plug 'jbyuki/venn.nvim'
+
 " Syntax enhancements
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
