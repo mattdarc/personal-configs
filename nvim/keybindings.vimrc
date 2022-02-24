@@ -25,10 +25,7 @@ nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fS :w!<CR>
 
 " Window remaps
-nnoremap <silent> <leader>wh :<c-w>h<CR>
-nnoremap <silent> <leader>wj :<c-w>j<CR>
-nnoremap <silent> <leader>wk :<c-w>k<CR>
-nnoremap <silent> <leader>wl :<c-w>l<CR>
+nnoremap <silent> <leader>w <c-w>
 
 nnoremap <silent> <C-w>t :split\|terminal<CR>
 nnoremap <silent> <expr> <leader>ff (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files<CR>"
