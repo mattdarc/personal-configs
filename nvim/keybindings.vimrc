@@ -23,6 +23,13 @@ nnoremap <silent> <leader>Q :qa<CR>
 nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fS :w!<CR>
+
+" Window remaps
+nnoremap <silent> <leader>wh :<c-w>h<CR>
+nnoremap <silent> <leader>wj :<c-w>j<CR>
+nnoremap <silent> <leader>wk :<c-w>k<CR>
+nnoremap <silent> <leader>wl :<c-w>l<CR>
+
 nnoremap <silent> <C-w>t :split\|terminal<CR>
 nnoremap <silent> <expr> <leader>ff (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files<CR>"
 nnoremap <silent> <expr> <leader>fd (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files %:p:h<CR>"
@@ -48,5 +55,7 @@ tnoremap <silent> <C-w>j <C-\><C-n><C-w>j
 tnoremap <silent> <C-w>k <C-\><C-n><C-w>k
 
 " Toggle comments with a single key
-nmap <silent> ; <Plug>NERDCommenterInvert
-vmap <silent> ; <Plug>NERDCommenterInvert
+nmap <silent> ; <Plug>NERDCommenterToggle
+vmap <silent> ; <Plug>NERDCommenterToggle
+let g:NERDSpaceDelims=1
+let g:NERDDefaultAlign='left'
