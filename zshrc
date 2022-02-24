@@ -100,9 +100,14 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /usr/share/fzf/shell/key-bindings.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+safe_source() {
+    [ -f "$1" ] && source "$1" > /dev/null
+}
+
+# zsh keybindings for fzf
+safe_source /usr/share/fzf/shell/key-bindings.zsh
+safe_source ~/.fzf.zsh
 
 # opam configuration
-test -r /home/mattdarcangelo/.opam/opam-init/init.zsh && . /home/mattdarcangelo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+safe_source $HOME/.opam/opam-init/init.zsh
