@@ -110,5 +110,7 @@ safe_source /usr/share/fzf/shell/key-bindings.zsh
 safe_source ~/.fzf.zsh
 safe_source /usr/local/opt/fzf/shell/key-bindings.zsh
 
+bindkey -v
+
 # opam configuration
 safe_source $HOME/.opam/opam-init/init.zsh
