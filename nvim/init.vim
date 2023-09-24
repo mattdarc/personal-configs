@@ -12,12 +12,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'aklt/plantuml-syntax'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'rhysd/vim-clang-format'
 
 " Couldn't get by without this
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Commenting
-Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'luochen1990/rainbow'
@@ -28,9 +26,7 @@ Plug 'jbyuki/venn.nvim'
 " Syntax enhancements
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
-Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-orgmode/orgmode'
 call plug#end()
 
 "set to 0 if you want to enable it later via :RainbowToggle
@@ -106,11 +102,6 @@ call s:source_relative ('fzf.vimrc')
 call s:source_relative ('keybindings.vimrc')
 call s:source_relative ('coc.vimrc')
 call s:source_relative ('airline.vimrc')
-call s:source_relative ('org.vimrc')
-
-if filereadable(expand("~/.vimrc"))
-    source ~/.vimrc
-endif
 
 " OCaml setup
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
