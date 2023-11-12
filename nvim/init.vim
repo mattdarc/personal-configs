@@ -9,24 +9,28 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-Plug 'aklt/plantuml-syntax'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'folke/neodev.nvim'
 
-" Couldn't get by without this
+" LSP/ Syntax
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-" Commenting
+
 Plug 'preservim/nerdtree'
-Plug 'qpkorr/vim-bufkill'
 Plug 'luochen1990/rainbow'
 
 " ASCII art
 Plug 'jbyuki/venn.nvim'
 
 " Syntax enhancements
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 "set to 0 if you want to enable it later via :RainbowToggle
@@ -97,12 +101,7 @@ function! s:source_relative (file)
     execute 'source '.s:path.'/'.a:file
 endfunction
 
-call s:source_relative ('autocorrect.vimrc')
 call s:source_relative ('fzf.vimrc')
 call s:source_relative ('keybindings.vimrc')
-call s:source_relative ('coc.vimrc')
+call s:source_relative ('lsp.lua')
 call s:source_relative ('airline.vimrc')
-
-" OCaml setup
-" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"

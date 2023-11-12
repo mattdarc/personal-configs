@@ -114,3 +114,5 @@ bindkey -v
 
 # opam configuration
 safe_source $HOME/.opam/opam-init/init.zsh
+export PATH="$PATH:/usr/local/opt/llvm/bin"
+export PATH="/usr/local/sbin:$PATH"

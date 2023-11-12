@@ -38,7 +38,6 @@ nnoremap <silent> <leader>xdw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR
 nnoremap <silent> <leader>fed :execute 'edit '.<SID>vimrc()<CR>
 nnoremap <silent> <leader>feR :execute 'source '.<SID>vimrc() \| echo 'config reloaded!'<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-nnoremap <silent> <expr> <Leader><Leader> .":FZF\<cr>"
 
 " Reasonable terminal behavior
 augroup TermGroup
